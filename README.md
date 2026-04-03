@@ -125,6 +125,15 @@ Controls access to Grail data — logs, events, spans, metrics, business events.
 
 **Condition attributes:**
 - `storage:table-name` — scope access to a specific Grail table
+- `storage:bucket-name` — scope to a specific bucket
+- `storage:dt.security_context` — scope by security context label
+- `storage:event.kind` — filter by event kind
+- `storage:host.name` — scope to a specific host
+- `storage:k8s.namespace.name` — scope to a Kubernetes namespace
+- `storage:k8s.cluster.name` — scope to a Kubernetes cluster
+- `storage:aws.account.id` — scope to an AWS account
+- `storage:azure.subscription` — scope to an Azure subscription
+- `storage:gcp.project.id` — scope to a GCP project
 
 > **Gotcha:** Conditional `DENY` on Grail table permissions is **not supported**. If you write `DENY storage:logs:read WHERE storage:table-name = "logs"`, it is treated as an **unconditional DENY** — blocking all log access, not just that table.
 
@@ -213,10 +222,17 @@ Notebooks, dashboards, and shared document management.
 | `document:documents:read` | Read documents |
 | `document:documents:write` | Create/update documents |
 | `document:documents:delete` | Delete documents |
-| `document:documents:restore` | Restore deleted documents |
-| `document:shares:read` | Read document shares |
-| `document:shares:write` | Manage document shares |
-| `document:shares:delete` | Delete document shares |
+| `document:documents:admin` | Admin access to all documents |
+| `document:trash.documents:read` | Read trashed documents |
+| `document:trash.documents:restore` | Restore deleted documents |
+| `document:trash.documents:delete` | Permanently delete trashed documents |
+| `document:environment-shares:read` | Read environment-level document shares |
+| `document:environment-shares:write` | Create/update environment shares |
+| `document:environment-shares:claim` | Claim an environment share |
+| `document:environment-shares:delete` | Delete environment shares |
+| `document:direct-shares:read` | Read direct (user-to-user) shares |
+| `document:direct-shares:write` | Create/update direct shares |
+| `document:direct-shares:delete` | Delete direct shares |
 
 ---
 
@@ -268,8 +284,8 @@ EF2 extension definition and monitoring configuration.
 |------------|-------------|
 | `extensions:definitions:read` | Read extension definitions |
 | `extensions:definitions:write` | Write extension definitions |
-| `extensions:monitoringconfigurations:read` | Read monitoring configs |
-| `extensions:monitoringconfigurations:write` | Write monitoring configs |
+| `extensions:configurations:read` | Read monitoring configs |
+| `extensions:configurations:write` | Write monitoring configs |
 
 **Condition attributes:**
 - `extensions:extension-name` — match by extension name
