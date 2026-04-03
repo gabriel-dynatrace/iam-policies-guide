@@ -475,3 +475,7 @@ Conditional ALLOW matches? ──► YES → ALLOW (granted)
        ▼
 No match → Implicit DENY (blocked, no error shown)
 ```
+
+---
+
+> **Disclaimer:** This guide is AI-assisted and intended for reference and learning purposes only. It may contain inaccuracies, incomplete information, or content that has drifted from current product behavior — always consult the [official Dynatrace documentation](https://docs.dynatrace.com) for authoritative guidance. This is not an official Dynatrace resource.
